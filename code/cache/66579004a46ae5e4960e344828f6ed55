@@ -1,0 +1,8 @@
+[Require Synthesized]
+n >= 2,
+forall k: int :: 0 <= k && k < (n as int) ==> fibo_fits_i32(k)
+[End Require]
+[Ensures Synthesized]
+ret.len() == n,
+forall k: int :: 0 <= k && k < (n as int) ==> (ret@[k] as int == fibo(k))
+[End Ensures]

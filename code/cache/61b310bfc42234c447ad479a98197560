@@ -1,0 +1,7 @@
+[Require Synthesized] {
+    nums.len() > 0
+}
+[Ensures Synthesized] {
+    forall |i: int| 0 <= i < nums@.len() ==> nums@[i] <= ret,
+    exists |i: int| 0 <= i < nums@.len() && nums@[i] == ret
+}

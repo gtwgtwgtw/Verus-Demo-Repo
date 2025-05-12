@@ -1,0 +1,8 @@
+[Require Synthesized]
+exists |q: int| 0 <= q < v.len() && v[q] % 2 == 1
+[End Require]
+[Ensures Synthesized]
+odd_index < v.len(),
+v[odd_index] % 2 == 1,
+forall |i: int| 0 <= i < odd_index ==> v[i] % 2 == 0
+[End Ensures]

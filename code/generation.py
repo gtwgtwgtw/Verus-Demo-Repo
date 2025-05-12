@@ -412,6 +412,7 @@ Please check the given program, and add nonlinear_arith assertion when Verus nee
 
         examples = []
 
+
         return self.llm.infer_llm(
             self.config.aoai_generation_model,
             instruction,
@@ -755,7 +756,9 @@ Here are some principles that you have to follow:
 
                 while attempt < 3:
                     # Only 1 refined candidate.
-                    code = func(original_code, temp=temp)[0]
+                    code = func(original_code, temp=temp)
+                    print(code)
+                    code = code[0]
                     # simple filtering
                     code = clean_code(code)
                     newcode = self.refinement.debug_type_error(code)[0]
@@ -935,6 +938,9 @@ Here are some principles that you have to follow:
         )
         code += "\n// Score: " + str(score)
         code += "\n// Safe: " + str(is_safe)
+
+        if score[1] != 0:
+            code = '// [FAILED]\n\n' + code
 
         with open(output_file, "w") as wf:
             wf.write(code)

@@ -1,0 +1,15 @@
+[Require Synthesized] {
+    // we must have at least one element (so v.len()-1 is well‐defined)
+    requires v@.len() > 0;
+    // the vector is sorted in non‐decreasing order
+    requires forall|i: usize, j: usize|  
+        i < j && j < v@.len() ==> v@[i] <= v@[j];
+    // the key actually occurs somewhere in the vector
+    requires exists|i: usize| i < v@.len() && v@[i] == k;
+}
+[Ensures Synthesized] {
+    // the returned index is in bounds
+    ensures r < v@.len();
+    // and at that index we indeed have the key
+    ensures v@[r] == k;
+}

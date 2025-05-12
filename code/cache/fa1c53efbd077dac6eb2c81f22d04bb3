@@ -1,0 +1,13 @@
+[Require Synthesized] {
+    // we unconditionally push two elements, so we need at least n ≥ 2,
+    // and we must ensure that the largest Fibonacci value fibo(n-1) fits in i32
+    n >= 2 && fibo_fits_i32((n as int) - 1)
+}
+
+[Ensures Synthesized] {
+    // the resulting vector has length n,
+    // and for every valid index i, its entry equals the spec fibo(i)
+    ret.len() == n
+    && forall |i: usize| i < n ==>
+         (ret[i] as int) == fibo(i as int)
+}

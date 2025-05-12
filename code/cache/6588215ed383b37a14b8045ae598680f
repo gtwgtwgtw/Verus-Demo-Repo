@@ -1,0 +1,7 @@
+[Require Synthesized]
+true
+[End Require]
+
+[Ensures Synthesized]
+y@ == old(y@).append(x@.filter(|e: u64| e % 3 == 0))
+[End Ensures]

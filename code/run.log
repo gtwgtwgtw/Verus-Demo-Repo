@@ -1,0 +1,33 @@
+fib
+cell_2_sum
+reverse
+deduplicate
+simple_nested
+linearsearch
+binary_search
+arg_free
+choose_odd
+trigger
+tail_triangle
+conditional_average
+sum
+max_index
+havoc_inline_post
+bubble
+filter
+findmax
+remove_all_greater
+  File "/Users/syc/Downloads/verus-proof-synthesis/code/spec_main.py", line 143
+    with open(f'final')
+                       ^
+SyntaxError: expected ':'
+map
+  File "/Users/syc/Downloads/verus-proof-synthesis/code/spec_main.py", line 143
+    with open(f'final')
+                       ^
+SyntaxError: expected ':'
+filter_weak
+  File "/Users/syc/Downloads/verus-proof-synthesis/code/spec_main.py", line 143
+    with open(f'final')
+                       ^
+SyntaxError: expected ':'

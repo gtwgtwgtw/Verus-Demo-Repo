@@ -1,0 +1,8 @@
+[Require Synthesized] {
+    nums.len() > 0
+}
+
+[Ensures Synthesized] {
+    forall |j: usize| j < nums.len() ==> nums[j] <= ret,
+    exists |j: usize| j < nums.len() && nums[j] == ret
+}

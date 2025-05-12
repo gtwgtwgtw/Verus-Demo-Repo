@@ -1,0 +1,6 @@
+[Require Synthesized]
+arith_sum_int(n) <= u64::MAX
+[End Require]
+[Ensures Synthesized]
+sum as nat == arith_sum_int(n)
+[End Ensures]

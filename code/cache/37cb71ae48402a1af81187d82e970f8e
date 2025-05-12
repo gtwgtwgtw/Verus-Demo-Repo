@@ -1,0 +1,10 @@
+[Require Synthesized]
+v.len() > 0,
+forall |i: usize, j: usize| i < j && j < v.len() ==> v[i] <= v[j],
+exists |i: usize| i < v.len() && v[i] == k
+[End Require]
+
+[Ensures Synthesized]
+r < v.len(),
+v[r] == k
+[End Ensures]

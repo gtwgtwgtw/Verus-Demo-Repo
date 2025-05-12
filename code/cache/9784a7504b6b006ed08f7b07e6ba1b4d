@@ -1,0 +1,17 @@
+[Require Synthesized] {
+    // We only operate on the first N entries, so `a` must have at least N elements.
+    a.len() >= N as usize
+}
+
+[Ensures Synthesized] {
+    // For each index i < N, we have capped the original value at 2.
+    forall |i: usize| i < N as usize ==>
+        a[i] == if old(a)[i] > 2 { 2 } else { old(a)[i] };
+
+    // For indices beyond N, the vector is unchanged.
+    forall |i: usize| N as usize <= i && i < old(a).len() ==>
+        a[i] == old(a)[i];
+
+    // The returned sum is exactly the sum of those capped‐at‐2 values for i < N.
+    sum == (0..(N as usize)).fold(0, |acc: u32, i| acc + (if old(a)[i] > 2 { 2 } else { old(a)[i] }))
+}

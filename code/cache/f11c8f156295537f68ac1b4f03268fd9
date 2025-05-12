@@ -1,0 +1,8 @@
+[Require Synthesized]
+N <= a.len() as u32
+[End Require]
+[Ensures Synthesized]
+forall |i: usize| i < N as usize ==> a[i] == if old(a)[i] > 2 { 2 } else { old(a)[i] },
+forall |i: usize| N as usize <= i && i < a.len() ==> a[i] == old(a)[i],
+sum == (0..N as usize).fold(0u32, |acc: u32, i| acc + (if old(a)[i] > 2 { 2 } else { old(a)[i] }))
+[End Ensures]
