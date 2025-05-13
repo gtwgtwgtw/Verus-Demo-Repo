@@ -18,7 +18,7 @@ def main():
     parser.add_argument("--mode", default="gen", help="Mode to run in (gen, repair)")
     parser.add_argument("--input", default="input.rs", help="Path to input file")
     parser.add_argument("--output", default="output.rs", help="Path to output file")
-    parser.add_argument("--repair", default=10, type=int, help="Number of repair steps")
+    parser.add_argument("--repair", default=3, type=int, help="Number of repair steps")
     # The arguments below were designed for ablation study; in most cases, you want to use the default value
     parser.add_argument(
         "--merge", default=5, type=int, help="Number of invariant candidates to merge"
@@ -56,13 +56,17 @@ def main():
 
     args = parser.parse_args()
     # Set log level.
-    logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.basicConfig(
+        filename="autoverus.log",
+        filemode='w',
         level=logging.INFO,
         format="%(asctime)s %(levelname)s: %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
+    #print('log file set')
+    logging.getLogger("httpx").setLevel(logging.WARNING)
     logger = logging.getLogger(__name__)
+    logger.info('Starting Solving')
 
     # Check if config file exists
     if not os.path.isfile(args.config):

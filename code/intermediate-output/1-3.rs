@@ -1,40 +1,38 @@
+
 use vstd::prelude::*;
 fn main() {}
 
 verus!{
-fn reverse(v: &mut Vec<u64>)
+fn binary_search(v: &Vec<u64>, k: u64) -> (r: usize)
 requires
-true
+v.len() > 0,
+∀i, j: 0 ≤ i < j < v.len() ==> v[i] ≤ v[j],
+∃i: i < v.len() && v[i] == k
 ensures
-v.len() == old(v).len(),
-forall|i: nat| i < v.len() ==> v[( i ) as int] == old(v)[v.len() - 1 - i]
+r < v.len(),
+v[r] == k
 {
-    let length = v.len();
-    let mut n: usize = 0;
-    while n < length / 2
+    let mut i1: usize = 0;
+    let mut i2: usize = v.len() - 1;
+    
+    while i1 != i2
         invariant
-            n <= length / 2,
-            length == v.len(),
-            forall |j: nat|
-                j < n ==> (
-                    v[( j ) as int] == old(v)[length - 1 - j]
-                    && v[length - 1 - j] == old(v)[( j ) as int]
-                ),
-            forall |j: nat|
-                n <= j && j < length - n ==> v[( j ) as int] == old(v)[( j ) as int],
+            i1 < v.len(),
+            i2 < v.len(),
+            0 <= i1 <= i2 < v.len(),
+            ∃i: i1 <= i <= i2 && v[i] == k,
+            ∀i, j: 0 ≤ i < j < v.len() ==> v[i] ≤ v[j],
     {
-        let x = v[n];
-        let y = v[length - 1 - n];
-        v.set(n, y);
-        v.set(length - 1 - n, x);
-        n = n + 1;
+        let ix = i1 + (i2 - i1) / 2;
+        if v[ix] < k {
+            i1 = ix + 1;
+        } else {
+            i2 = ix;
+        }
     }
+    i1
 }
 }
-
-
-
-
 
 // is safe: False
-// Score: Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 1
+// Score: Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 9

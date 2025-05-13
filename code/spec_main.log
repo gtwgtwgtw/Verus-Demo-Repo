@@ -1,0 +1,29 @@
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+/* Adds 4 to each element of the vector in place, preserving its length. */
+
+use vstd::prelude::*;
+fn main() {}
+verus!{
+pub fn myfun2(x: &mut Vec<i32>) 
+requires
+forall|i: usize| 0 <= i && i < x.len() ==> x[i] <= i32::MAX - 4
+ensures
+x.len() == old(x.len()),
+forall|i: usize| 0 <= i && i < x.len() ==> x[i] == old(x[i]) + 4
+
+{
+    let mut i: usize = 0;
+    let xlen: usize = x.len();
+    while (i < xlen) 
+    { 
+        x.set(i, x[i] + 4);  
+        i = i + 1;
+    }  
+}
+}
+Start Proof Synthesis Agent
+Error in Proof Synthesis
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins

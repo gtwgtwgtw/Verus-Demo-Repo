@@ -1,7 +1,0 @@
-[Require Synthesized]
-[End Require]
-
-[Ensures Synthesized]
-exists |r: Seq<int>| is_reorder_of(r, nums@, old(nums@)),
-sorted_between(nums@, 0, n as int)
-[End Ensures]

@@ -1,0 +1,9 @@
+[Require Synthesized]
+v.len() > 0,
+∀i, j: 0 ≤ i < j < v.len() ==> v[i] ≤ v[j],
+∃i: i < v.len() && v[i] == k
+[End Require]
+[Ensures Synthesized]
+r < v.len(),
+v[r] == k
+[End Ensures]

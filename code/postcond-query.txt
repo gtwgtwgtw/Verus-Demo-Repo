@@ -1,87 +1,64 @@
 Failed post-condition
 ```
-Line 20-20:
+Line 21-21:
 failed this postcondition
-        sorted_between(nums@, 0, nums@.len() as int),
+        v[r as int] == k,
 ```
 Failed location
 ```
-Line 63-66:
+Line 47-47:
 at the end of the function body
-    proof {
-        assert(is_reorder_of(r, nums@, old(nums)@));
-        assert(exists|rr: Seq<int>| is_reorder_of(rr, nums@, old(nums)@));
-    }
+    i1
 ```
 
 Code
-```use vstd::prelude::*;
+```
+/*
+Performs binary search on a sorted vector to locate a given key.
+Returns the index of the key within the vector.
+*/
+
+//This example is from Verus tutorial, Chpt 7.5
+use vstd::prelude::*;
 fn main() {}
 
-verus! {
+verus!{
 
 #[verifier::loop_isolation(false)]
-spec fn sorted_between(a: Seq<u32>, from: int, to: int) -> bool {
-    forall |i: int, j:int|  from <= i < j < to ==> a[i] <= a[j]
-}
- 
-spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> bool {
-    &&& r.len() == s.len()
-    &&& forall|i: int| 0 <= i < r.len() ==> 0 <= #[trigger] r[i] < r.len()
-    &&& forall|i: int, j: int| 0 <= i < j < r.len() ==> r[i] != r[j]
-    &&& p =~= r.map_values(|i: int| s[i])
-}
- 
-fn test1(nums: &mut Vec<u32>)
+fn binary_search(v: &Vec<u64>, k: u64) -> (r: usize)
+    requires
+        v.len() > 0,
+        forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j],
+        exists|idx: int| 0 <= idx < v.len() && v[idx] == k
     ensures
-        sorted_between(nums@, 0, nums@.len() as int),
-        exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+        r < v.len(),
+        v[r as int] == k,
+        forall|i: int| 0 <= i < r as int ==> v[i] < k
 {
-    let n = nums.len();
-    if n == 0 {
-        proof {
-            let r0 = Seq::new(0, |i: int| i);
-            assert(is_reorder_of(r0, nums@, nums@));
-            assert(exists|r: Seq<int>| is_reorder_of(r, nums@, nums@));
-        }
-        return;
-    }
-    let ghost mut r = Seq::new(( n ) as nat, |i: int| i);
-    for i in 1..n
+    let mut i1: usize = 0;
+    let mut i2: usize = v.len() - 1;
+    while i1 != i2
         invariant
-            nums@.len() == n,
-            is_reorder_of(r, nums@, old(nums)@),
-            exists|rr: Seq<int>| is_reorder_of(rr, nums@, old(nums)@),
+            v.len() > 0,
+            forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j],
+            exists|idx: int| 0 <= idx < v.len() && v[idx] == k, // Key must be in the range
+            i1 <= i2, // Ensure i1 is always less than or equal to i2
+            i2 < v.len(), // Ensure i2 is within bounds of the array
+            i1 < v.len(), // Ensure i1 is within bounds of the array
+            i2 - i1 <= v.len(), // Prevent overflow in the subtraction (i2 - i1)
+            forall|i: int| 0 <= i < i1 as int ==> v[i] < k, // Added invariant by AI
     {
-        let mut j = i;
-        while j != 0
-            invariant
-                nums@.len() == n,
-                0 <= j <= i < n,
-                is_reorder_of(r, nums@, old(nums)@),
-                exists|rr: Seq<int>| is_reorder_of(rr, nums@, old(nums)@),
-        {
-            if nums[j - 1] > nums[j] {
-                proof {
-                    let r1 = r.update(j - 1, r[j as int]).update(j as int, r[j - 1]);
-                    assert(is_reorder_of(r1, nums@.update(j - 1, nums@[j as int]).update(j as int, nums@[j - 1]), old(nums)@));
-                    r = r1;
-                }
-                let temp = nums[j - 1];
-                nums.set(j - 1, nums[j]);
-                nums.set(j, temp);
-            }
-            j -= 1;
-            proof {
-                assert(exists|rr: Seq<int>| is_reorder_of(rr, nums@, old(nums)@));
-            }
+        let ix = i1 + (i2 - i1) / 2;
+        if v[ix] < k {
+            i1 = ix + 1;
+        } else {
+            i2 = ix;
         }
     }
     proof {
-        assert(is_reorder_of(r, nums@, old(nums)@));
-        assert(exists|rr: Seq<int>| is_reorder_of(rr, nums@, old(nums)@));
+        assert(forall|i: int| 0 <= i < i1 as int ==> v[i] < k); // Added proof block by AI
     }
+    i1
 }
-
 }
 ```

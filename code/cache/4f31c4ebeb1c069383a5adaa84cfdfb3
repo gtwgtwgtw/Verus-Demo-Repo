@@ -1,9 +1,0 @@
-[Require Synthesized] {
-    // no preconditions
-}
-[Ensures Synthesized] {
-    // The result is sorted in non-decreasing order
-    sorted_between(nums@, 0, nums@.len() as int),
-    // And it is a permutation of the original vector
-    exists |r: Seq<int>| is_reorder_of(r, nums@, old(nums)@)
-}

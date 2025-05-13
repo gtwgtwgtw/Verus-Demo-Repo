@@ -13,6 +13,7 @@ from utils import (
     fix_one_type_error_in_code,
     insert_loop_isolation,
     insert_lemma_func,
+    evaluate
 )
 from veval import VEval, VerusErrorType, VerusError, VerusErrorLabel
 
@@ -1224,7 +1225,7 @@ Response with the Rust code only, do not include any explanation."""
         if not "loop_isolation(false)" in code:
             code = insert_loop_isolation(code)
 
-        print("Start repair")
+        self.logger.info("Start repair")
         # Adjustable Configuration: # of simple fix before switching to more creative ones
         simpleRepair_per_failure = 3
         remove_lines_per_failure = 5
@@ -1429,6 +1430,10 @@ Response with the Rust code only, do not include any explanation."""
         content = open(input_file).read()
         repair_steps = args.get("repair", 5)
         code = self.run_code(content, repair_num=repair_steps)
+
+        score, _ = evaluate(code, self.config.verus_path)
+        if score[1] != 0:
+            code = '// [FAILED]\n\n' + code
 
         with open(output_file, "w") as wf:
             wf.write(code)

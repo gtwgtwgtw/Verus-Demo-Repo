@@ -579,9 +579,9 @@ Here are some principles that you have to follow:
         code,
         with_inference=True,
         with_refine=True,
-        merge_cand=5,
+        merge_cand=1,
         verbose=False,
-        repair_steps=10,
+        repair_steps=3,
         temp=1.0,
         temp_dir=Path("output-intermediate-temp"),
         disable_ranking=False,
@@ -757,7 +757,7 @@ Here are some principles that you have to follow:
                 while attempt < 3:
                     # Only 1 refined candidate.
                     code = func(original_code, temp=temp)
-                    print(code)
+                    #print(code)
                     code = code[0]
                     # simple filtering
                     code = clean_code(code)
@@ -857,8 +857,8 @@ Here are some principles that you have to follow:
 
     def run(self, input_file, output_file, args: dict = {}):
         baseline = args.get("is_baseline", False)
-        repair_steps = args.get("repair", 5)
-        merge_cand = args.get("merge", 5)
+        repair_steps = args.get("repair", 2)
+        merge_cand = args.get("merge", 1)
         temp = args.get("temp", 1.0)
         phase_uniform = args.get("phase_uniform", False)
         disable_ranking = args.get("disable_ranking", False)

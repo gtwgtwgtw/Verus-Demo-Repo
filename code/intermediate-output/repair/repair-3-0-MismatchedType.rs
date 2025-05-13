@@ -1,34 +1,48 @@
-/* Appends to y every element of x that is divisible by 3, preserving their original order. After execution, y contains exactly the multiples of 3 from x. */
+/*[Performs a linear search on the input vector `nums`, returning the index of the first matching element or -1 if the target is not found.]*/
 
+
+#[allow(unused_imports)]
 use vstd::prelude::*;
+
 fn main() {}
 
-verus!{
+verus! {
 
 #[verifier::loop_isolation(false)]
-pub fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
+fn linear_search(nums: Vec<i32>, target: i32) -> (ret: i32)
 requires
-true
+nums.len() <= i32::MAX as usize
 ensures
-y@ == old(( y@ ) as &mut _).append(x@.filter(|e: u64| e % 3 == 0))
+ret == -1 ==> (forall|j: nat| j < nums.len() ==> nums[( j ) as int] != target),
+ret != -1 ==> (
+    0 <= ret < nums.len()
+    && nums[( ret ) as int] == target
+    && (forall|j: nat| j < ret ==> nums[( j ) as int] != target)
+)
+
 {
-    let mut i: usize = 0;
-    let xlen = x.len();
-    
-    while (i < xlen) 
-    { 
-        if (x[i] % 3 == 0) {
-            y.push(x[i]);            
+    let mut i = 0;
+    while i < nums.len()
+    {
+        if nums[i] == target {
+            break;
         }
         i = i + 1;
+    }
+    if i == nums.len() {
+        -1
+    } else {
+        i as i32
     }
 }
 }
 
 
-// y@ == old(y@).append(x@.filter(|e: u64| e % 3 == 0))
-//   expected `&mut _`, found `Seq<u64>`: y@
-//   arguments to this function are incorrect: old
 
-// Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 3
+
+// ret == -1 ==> (forall|j: nat| j < nums.len() ==> nums[j] != target),
+//   expected `int`, found `nat`: j
+//   arguments to this method are incorrect: nums[j]
+
+// Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 2
 // Safe: False

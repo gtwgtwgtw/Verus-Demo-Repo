@@ -1,8 +1,0 @@
-[Require Synthesized]
-x.len() > 0
-[End Require]
-
-[Ensures Synthesized]
-max_index < x.len(),
-forall |j: usize| (j < x.len() ==> x[j] <= x[max_index])
-[End Ensures]

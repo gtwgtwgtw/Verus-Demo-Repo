@@ -5,6 +5,7 @@ from utils import compress_nl_assertion
 import tempfile
 from lynette import lynette
 from veval import VEval, VerusErrorType, VerusError
+import difflib
 
 
 class houdini:

@@ -1,7 +1,0 @@
-[Require Synthesized]
-[End Require]
-
-[Ensures Synthesized]
-res@.no_duplicates(),
-Set::ext_equal(seq_to_set_rec(nums@), res@.to_set())
-[End Ensures]

@@ -1,40 +1,56 @@
+
+/*[Performs a linear search on the input vector `nums`, returning the index of the first matching element or -1 if the target is not found.]*/
+
+#[allow(unused_imports)]
 use vstd::prelude::*;
+
 fn main() {}
 
 verus! {
-    spec fn sorted_between(a: Seq<u32>, from: int, to: int) -> bool {
-        forall |i: int, j:int|  from <= i < j < to ==> a[i] <= a[j]
-    }
- 
- 
-    spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> bool {
-    &&& r.len() == s.len()
-    &&& forall|i: int| 0 <= i < r.len() ==> 0 <= #[trigger] r[i] < r.len()
-    &&& forall|i: int, j: int| 0 <= i < j < r.len() ==> r[i] != r[j]
-    &&& p =~= r.map_values(|i: int| s[i])
-    }
- 
-    fn test1(nums: &mut Vec<u32>)
-        ensures
-            sorted_between(nums@, 0, nums@.len() as int),
-            exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+
+#[verifier::loop_isolation(false)]
+fn linear_search(nums: Vec<i32>, target: i32) -> (ret: i32)
+    requires
+        // We assume the length of the vector is within i32 range so that casting
+        // its length to i32 is safe.
+        nums.len() <= i32::MAX as usize,
+    ensures
+        // If `ret == -1`, then no element in the vector is equal to `target`.
+        ret == -1 ==> (
+            forall |j: int|
+                0 <= j < nums.len() as int
+                ==> nums.index(j) != target
+        ),
+        // Otherwise, `ret` must be within valid index range, the element at `ret`
+        // is `target`, and no earlier index has an element equal to `target`.
+        ret != -1 ==> (
+            0 <= ret < nums.len() as i32
+            && nums.index(ret as int) == target
+            && (forall |j: int|
+                0 <= j < ret
+                ==> nums.index(j) != target
+            )
+        )
+{
+    let mut i = 0usize;
+    while i < nums.len()
+        invariant
+            nums.len() <= i32::MAX as usize,
+            i <= nums.len(),
+            (forall |j: int| 0 <= j < i as int ==> nums.index(j) != target),
+        decreases nums.len() - i
     {
-        let n = nums.len();
-        if n == 0 {
-            return;
+        if nums[i] == target {
+            break;
         }
-        for i in 1..n
-        {
-            let mut j = i;
-            while j != 0
-            {
-                if nums[j - 1] > nums[j] {
-                    let temp = nums[j - 1];
-                    nums.set(j - 1, nums[j]);
-                    nums.set(j, temp);
-                }
-                j -= 1;
-            }
-        }
+        i = i + 1;
     }
+
+    if i == nums.len() {
+        -1
+    } else {
+        i as i32
+    }
+}
+
 }

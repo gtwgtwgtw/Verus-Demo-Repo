@@ -1,9 +1,0 @@
-[Require Synthesized]
-arr.len() > 0,
-i < arr.len(),
-forall j: usize :: j < arr.len() ==> arr[j] == j as u64 + 2
-[End Require]
-
-[Ensures Synthesized]
-ret == i as u64 + 2
-[End Ensures]

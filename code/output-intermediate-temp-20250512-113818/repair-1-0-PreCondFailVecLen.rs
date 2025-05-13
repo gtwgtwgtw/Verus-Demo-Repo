@@ -1,0 +1,59 @@
+#[allow(unused_imports)]
+use vstd::prelude::*;
+fn main() {}
+
+verus! {
+
+#[verifier::loop_isolation(false)]
+// [Trusted]
+spec fn fibo(n: int) -> nat
+    decreases n
+{
+    if n <= 0 {
+        0
+    } else if n == 1 {
+        1
+    } else {
+        fibo(n - 2) + fibo(n - 1)
+    }
+}
+
+// [Trusted]
+spec fn fibo_fits_i32(n: int) -> bool {
+    fibo(n) < 0x8000_0000
+}
+
+fn fibonacci(n: usize) -> (ret: Vec<i32>)
+    requires
+        n >= 2,
+        fibo_fits_i32(n - 1),
+    ensures
+        ret.len() == n,
+        forall|i: nat| i < n ==> ret[i as int] as int == fibo(i as int),
+{
+    let mut fib = Vec::new();
+    fib.push(0);
+    fib.push(1);
+
+    let mut i = 2;
+    while i < n
+        invariant
+            fib.len() == i,
+            i >= 2
+    {
+        let next_fib = fib[i - 1] + fib[i - 2];
+        fib.push(next_fib);
+        i += 1;
+    }
+    fib
+}
+}
+
+//         let next_fib = fib[i - 1] + fib[i - 2];
+// failed precondition
+//         i < vec.view().len(),
+//   failed precondition: i < vec.view().len()
+//   None: fib[i - 1]
+
+// Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 3
+// Safe: True

@@ -1,76 +1,54 @@
+
 use vstd::prelude::*;
 fn main() {}
 
-verus! {
+verus!{
 
 #[verifier::loop_isolation(false)]
-spec fn sorted_between(a: Seq<u32>, from: int, to: int) -> bool {
-    forall |i: int, j:int|  from <= i < j < to ==> a[i] <= a[j]
-}
-
-spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> bool {
-    &&& r.len() == s.len()
-    &&& forall|i: int| 0 <= i < r.len() ==> 0 <= #[trigger] r[i] < r.len()
-    &&& forall|i: int, j: int| 0 <= i < j < r.len() ==> r[i] != r[j]
-    &&& p =~= r.map_values(|i: int| s[i])
-}
-
-fn test1(nums: &mut Vec<u32>)
+fn binary_search(v: &Vec<u64>, k: u64) -> (r: usize)
+    requires
+        v.len() > 0,
+        forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j],
+        exists|idx: int| 0 <= idx < v.len() && v[idx] == k
     ensures
-        sorted_between(nums@, 0, nums@.len() as int),
-        exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+        r < v.len(),
+        v[r as int] == k,
+        forall|i: int| 0 <= i < r as int ==> v[i] < k
 {
-    let n = nums.len();
-    if n == 0 {
-        proof {
-            assert(exists|r: Seq<int>| is_reorder_of(r, nums@, nums@));
-        } // Added by AI
-        return;
-    }
-    for i in 1..n
+    let mut i1: usize = 0;
+    let mut i2: usize = v.len() - 1;
+    while i1 != i2
         invariant
-            nums@.len() == n,
-            sorted_between(nums@, 0, i as int),
-            exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+            v.len() > 0,
+            forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j],
+            exists|idx: int| 0 <= idx < v.len() && v[idx] == k,
+            i1 <= i2,
+            i2 < v.len(),
+            i1 < v.len(),
+            i2 - i1 <= v.len(),
+            forall|i: int| 0 <= i < i1 as int ==> v[i] < k,
     {
-        let mut j = i;
-        while j != 0
-            invariant
-                nums@.len() == n,
-                sorted_between(nums@, 0, i as int),
-                0 <= j <= i < n,
-                exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
-        {
-            if nums[j - 1] > nums[j] {
-                proof {
-                    let r1 = choose|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@);
-                    let r2 = r1.update(j-1, r1[j as int]).update(j as int, r1[j-1]);
-                    assert(is_reorder_of(r2, nums@.update(j-1, nums@[j as int]).update(j, nums@[j-1]), old(nums)@));
-                }
-                let temp = nums[j - 1];
-                nums.set(j - 1, nums[j]);
-                nums.set(j, temp);
-            }
-            j -= 1;
-            proof {
-                assert(exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@));
-            }
-        }
-        proof {
-            assert(sorted_between(nums@, 0, i as int));
+        let ix = i1 + (i2 - i1) / 2;
+        if v[ix] < k {
+            i1 = ix + 1;
+        } else {
+            i2 = ix;
         }
     }
     proof {
-        assert(sorted_between(nums@, 0, nums@.len() as int));
+        assert(v[i1 as int] == k); // Added proof block by AI
     }
+    i1
+}
 }
 
 
 // failed this postcondition
-//             exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
-//             return;
-//   at this exit: return
-//   failed this postcondition: exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@)
+//         v[r as int] == k,
+// at the end of the function body
+//     i1
+//   at the end of the function body: i1
+//   failed this postcondition: v[r as int] == k
 
 // Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 1
-// Safe: False
+// Safe: True

@@ -1,6 +1,0 @@
-[Require Synthesized]
-[End Require]
-[Ensures Synthesized]
-v.len() == old(v.len()),
-forall |i: usize| i < v.len() ==> v[i] == old(v)[old(v.len()) - 1 - i]
-[End Ensures]

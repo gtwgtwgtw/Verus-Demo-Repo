@@ -1,8 +1,0 @@
-[Require Synthesized] {
-    x.len() > 0
-}
-
-[Ensures Synthesized] {
-    max_index < x.len();
-    forall |j: usize| j < x.len() ==> x[max_index] >= x[j];
-}

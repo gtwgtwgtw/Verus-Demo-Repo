@@ -1,25 +1,35 @@
-#[allow(unused_imports)]
+/*
+Performs binary search on a sorted vector to locate a given key.
+Returns the index of the key within the vector.
+*/
+
+
+//This example is from Verus tutorial, Chpt 7.5
 use vstd::prelude::*;
 fn main() {}
 
-verus! {
-fn find_max(nums: Vec<i32>) -> (ret:i32)
+verus!{
+fn binary_search(v: &Vec<u64>, k: u64) -> (r: usize)
 requires
-nums.len() > 0
+v.len() > 0,
+∀i, j: 0 ≤ i < j < v.len() ==> v[i] ≤ v[j],
+∃i: i < v.len() && v[i] == k
 ensures
-exists(|j: usize| j < nums.len() && ret == nums[j]),
-forall(|k: usize| k < nums.len() ==> ret >= nums[k])
+r < v.len(),
+v[r] == k
 {
-    let mut max = nums[0];
-    let mut i = 1;
-    while i < nums.len()
+    let mut i1: usize = 0;
+    let mut i2: usize = v.len() - 1;
+    while i1 != i2
     {
-        if nums[i] > max {
-            max = nums[i];
+        let ix = i1 + (i2 - i1) / 2;
+        if v[ix] < k {
+            i1 = ix + 1;
+        } else {
+            i2 = ix;
         }
-        i += 1;
     }
-    max
+    i1
 }
 }
-// Score: Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 2
+// Score: Compilation Error: True, Verified: -1, Errors: 999, Verus Errors: 5

@@ -1,33 +1,477 @@
 fib
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 cell_2_sum
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 reverse
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[Verified]
 deduplicate
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 simple_nested
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 linearsearch
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[Verified]
 binary_search
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[Verified]
 arg_free
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[Verified]
 choose_odd
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[Verified]
 trigger
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[Verified]
 tail_triangle
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 conditional_average
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 sum
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 max_index
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[Verified]
 havoc_inline_post
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 bubble
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+Error at bubble.rs
 filter
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+Error at filter.rs
 findmax
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[Verified]
 remove_all_greater
-  File "/Users/syc/Downloads/verus-proof-synthesis/code/spec_main.py", line 143
-    with open(f'final')
-                       ^
-SyntaxError: expected ':'
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+Error at remove_all_greater.rs
 map
-  File "/Users/syc/Downloads/verus-proof-synthesis/code/spec_main.py", line 143
-    with open(f'final')
-                       ^
-SyntaxError: expected ':'
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
 filter_weak
-  File "/Users/syc/Downloads/verus-proof-synthesis/code/spec_main.py", line 143
-    with open(f'final')
-                       ^
-SyntaxError: expected ':'
+New Round 0 Begins
+[SPEC_INFERENCE] Synthesizing Requires and Ensures Clauses
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 1 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 2 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 3 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+End Proof Synthesis Agent, RECORD
+Start Proof Repair Agent
+End Proof Repair Agent, RECORD
+New Round 4 Begins
+[REPAIR] Repair the code
+Start Proof Synthesis Agent
+Error at filter_weak.rs

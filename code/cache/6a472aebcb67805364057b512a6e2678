@@ -1,8 +1,0 @@
-[Require Synthesized]
-idx <= n,
-*sum == triangle(idx) as u32
-[End Require]
-
-[Ensures Synthesized]
-*sum == triangle(n) as u32
-[End Ensures]
